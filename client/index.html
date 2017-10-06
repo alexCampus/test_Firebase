@@ -17,7 +17,20 @@
   			<input type="text" class="form-control" id="name" placeholder="Username" aria-describedby="basic-addon1" >
 			<button type="button" class="btn btn-primary" onclick="getName()">Add Name</button>
 		</div>
-		<button id="game" type="button" class="btn btn-primary hidden" onclick="writeUserData(1)">GOOOOOOO</button>
+		<div id="loader" class="hidden">
+			<h2>Veuillez patienter....</h2>
+			<div class="loader d-block mx-auto"></div>
+		</div>
+		<table style="height: 400px;margin-left: 25%">
+  			<tbody>
+    			<tr>
+     	      		<td class="align-middle">
+     	      			<button id="game" type="button" class="btn btn-primary align-middle btn-circle btn-xl hiddenPlus" onclick="writeUserData()">GOOOOOOO</button>
+     	      		</td>
+			    </tr>
+  			</tbody>
+		</table>
+		
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
