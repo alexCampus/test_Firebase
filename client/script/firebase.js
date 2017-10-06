@@ -1,35 +1,34 @@
 // Initialize Firebase
-var config = {
-	apiKey: "AIzaSyAlJ1vxffN49vHV2N87n4GRha9tjIzHNds",
-    authDomain: "humantalks-firebase.firebaseapp.com",
-    databaseURL: "https://humantalks-firebase.firebaseio.com",
-    projectId: "humantalks-firebase",
-    storageBucket: "humantalks-firebase.appspot.com",
-    messagingSenderId: "368564411937"
-};
-
-firebase.initializeApp(config);
 let dbRef            = firebase.database().ref();
 let countWinnerPlace = dbRef.child('countWinnerPlace/');
 let count            = 0;
 let name;
 let user;
+let userKey;
 
+dbRef.once('value').then(function(snapshot){
+	console.log("There are "+snapshot.numChildren()+" messages");
+	if (snapshot.numChildren() >= 23 ) {
+		$('.input-group').addClass('hidden');
+		$('#loader').removeClass('hidden');
+	}
+});
 function getName() {
 	name  = $('#name').val();
 	console.log(name);
 	$('.input-group').addClass('hidden');
 	$('#loader').removeClass('hidden');
-	user = dbRef.child('/' + name);
-	user.set({
+	user =  dbRef.push({
 		username: name,
 		count   : 0,
 		place   : 0
 	});
+	userKey = user.key;
 }
 function writeUserData() {
 	count ++;
-	user.update({
+
+	dbRef.child('/' + userKey).update({
 		count: count
 	});
 	user.once('value').then(function(snapshot) {

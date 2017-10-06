@@ -1,14 +1,4 @@
 // Initialize Firebase
-  var config = {
-  	apiKey: "AIzaSyAlJ1vxffN49vHV2N87n4GRha9tjIzHNds",
-    authDomain: "humantalks-firebase.firebaseapp.com",
-    databaseURL: "https://humantalks-firebase.firebaseio.com",
-    projectId: "humantalks-firebase",
-    storageBucket: "humantalks-firebase.appspot.com",
-    messagingSenderId: "368564411937"
-  };
-  firebase.initializeApp(config);
-
 let current_progress = 0;
 let dbRef            = firebase.database().ref();
 let countWinnerPlace = dbRef.child('countWinnerPlace/');
