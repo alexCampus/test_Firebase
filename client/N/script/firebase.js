@@ -7,7 +7,6 @@ let user;
 let userKey;
 
 dbRef.once('value').then(function(snapshot){
-	console.log("There are "+snapshot.numChildren()+" messages");
 	if (snapshot.numChildren() >= 23 ) {
 		$('.input-group').addClass('hidden');
 		$('#loader').removeClass('hidden');
@@ -15,18 +14,22 @@ dbRef.once('value').then(function(snapshot){
 });
 function getName() {
 	name  = $('#name').val();
-	console.log(name);
-	$('.input-group').addClass('hidden');
-	$('#loader').removeClass('hidden');
-	user =  dbRef.push({
-		username: name,
-		count   : 0,
-		place   : 0
-	});
-	userKey = user.key;
+	if (name) {
+		$('.input-group').addClass('hidden');
+		$('#loader').removeClass('hidden');
+		user =  dbRef.push({
+			username: name,
+			count   : 0,
+			place   : 0
+		});
+		userKey = user.key;
+	} else {
+		location.reload();
+	}
+	
 }
 function writeUserData() {
-	count ++;
+	count +=20;
 
 	dbRef.child('/' + userKey).update({
 		count: count
@@ -36,8 +39,8 @@ function writeUserData() {
 		count = snapshot.val().count;
 		if (count >= 100) {
 			countWinnerPlace.once('value').then(function(snap){
-				console.log(snap.val());
-				$('#loader').after('<h1>' + snap.val() + '</h1>');
+				$('#winnerPlace').append('<h1 id="h1"></h1>')
+				$('#h1').text('Tu as la place N° ' + snap.val());
 				user.update({
 					place: snap.val()
 				});
@@ -45,7 +48,7 @@ function writeUserData() {
 
 			});
 			$('#game').addClass('hiddenPlus');
-			// $('#loader').removeClass('hidden');
+			return;
 		}
 	})
 }
@@ -60,7 +63,8 @@ startGame.on('value', function(snapshot) {
 	if (snapshot.val() === false) {
 		$('#game').addClass('hiddenPlus');
 		$('.input-group').removeClass('hidden');
+		$('#h1').remove();
+		count = 0;
 		
 	}
-	console.log(snapshot.val());
 });

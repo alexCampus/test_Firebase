@@ -15,17 +15,20 @@
 		<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">@</span>
   			<input type="text" class="form-control" id="name" placeholder="Username" aria-describedby="basic-addon1" >
-			<button type="button" class="btn btn-primary" onclick="getName()">Add Name</button>
+			<button type="button" class="btn" onclick="getName()">Add Name</button>
 		</div>
 		<div id="loader" class="hidden">
 			<h2>Veuillez patienter....</h2>
 			<div class="loader d-block mx-auto"></div>
 		</div>
+		<div id="winnerPlace">
+
+		</div>
 		<table style="height: 400px;margin-left: 25%">
   			<tbody>
     			<tr>
      	      		<td class="align-middle">
-     	      			<button id="game" type="button" class="btn btn-primary align-middle btn-circle btn-xl hiddenPlus" onclick="writeUserData()">GOOOOOOO</button>
+     	      			<button id="game" type="button" class="btn align-middle btn-circle btn-xl hiddenPlus" onclick="writeUserData()">Click 100 Fois</button>
      	      		</td>
 			    </tr>
   			</tbody>
@@ -38,7 +41,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	
 	<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
-	<script type="text/javascript" src="../firebase-env.js"></script>
+	<script type="text/javascript" src="./script/firebase-env.js"></script>
 	<script type="text/javascript" src="./script/firebase.js"></script>
 </body>
 </html>

@@ -1,9 +1,18 @@
+body {
+  background-image: url("../img/background.jpg");
+}
 .hidden, .hiddenPlus {
 	display: none;
 }
-.input-group {
+.input-group{
 	margin-top: 50%;
 }
+
+#h1 {
+    margin-top: 50%;
+    color: #fff;
+}
+
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
