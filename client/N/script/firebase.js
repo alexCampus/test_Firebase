@@ -7,7 +7,7 @@ let user;
 let userKey;
 
 dbRef.once('value').then(function(snapshot){
-	if (snapshot.numChildren() >= 23 ) {
+	if (snapshot.numChildren() >= 19 ) {
 		$('.input-group').addClass('hidden');
 		$('#loader').removeClass('hidden');
 	}

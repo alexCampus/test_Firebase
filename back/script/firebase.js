@@ -8,8 +8,9 @@ dbRef.on('value', function(snapshot) {
   	console.log(snapshot.val());
   	$.each(snapshot.val(), function(index, value){
   		if (value.count != undefined) {
-	  		$('.game').append('<div class="progress align-self-center" id="' + value.username + '">');
-	  		$('#' + value.username).before('<h1>' + value.username + '</h1>');
+  			$('.game').append('<div class="row" id="row_' + value.username + '" style="margin-left:1%">');
+	  		$('#row_'+ value.username).append('<div class="progress align-self-center" id="' + value.username + '">');
+	  		$('#' + value.username).before('<h1 style="width:6%">' + value.username + '</h1>');
 	  		$('#' + value.username).append('<div id="dynamic_'+ value.username +'" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">');
 			$('#dynamic_' + value.username).append('<span id="current-progress_"' + value.username + '></span>'); 	  	
 	  		console.log(value.count);
@@ -21,7 +22,7 @@ dbRef.on('value', function(snapshot) {
 
 		    	if (current_progress >= 100) {
 		    		$("#dynamic_" + value.username).addClass('hidden');
-		    		$('#' + value.username).after('<h2>' + value.place + '</h2>');
+		    		$('#' + value.username).after('<h2 style="color: green">' + value.place + '</h2>');
 		    	}
   			
   		}
